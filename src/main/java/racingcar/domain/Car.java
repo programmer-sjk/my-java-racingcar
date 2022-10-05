@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
+
 public class Car {
     private static final int NAME_LIMIT = 5;
     private String name;
@@ -10,6 +12,10 @@ public class Car {
 
     public String getName() {
         return this.name;
+    }
+
+    public void move(int movePoint) {
+
     }
 
     private void validate(String name) {

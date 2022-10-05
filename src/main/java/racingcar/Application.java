@@ -12,5 +12,7 @@ public class Application {
 
         Screen.askTryCount();
         race.setTryCount(readLine());
+
+        race.start();
     }
 }
