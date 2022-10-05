@@ -7,7 +7,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static void main(String[] args) {
-        Screen.showCarNames();
+        Screen.askCarNames();
         Race race = new Race(readLine());
+
+        Screen.askTryCount();
+        race.setTryCount(readLine());
     }
 }
