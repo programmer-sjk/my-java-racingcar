@@ -1,6 +1,9 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
@@ -14,8 +17,22 @@ public class Race {
         }
     }
 
+    public int getTryCount() {
+        return this.tryCount;
+    }
+
     public void setTryCount(String tryCount) {
         this.tryCount = Integer.parseInt(tryCount);
+    }
+
+    public CarDistance result() {
+        Map<String, List<Boolean>> carDistance = new HashMap<>();
+
+        for (Car car : racingCars) {
+            carDistance.put(car.getName(), car.getDistances());
+        }
+
+        return new CarDistance(carDistance);
     }
 
     public void start() {
