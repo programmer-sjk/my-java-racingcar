@@ -50,4 +50,13 @@ public class Screen {
         System.out.println("");
     }
 
+    public static void showRaceWinner(CarDistance carDistance) {
+        printWinner();
+        System.out.println(carDistance.winner());
+    }
+
+    private static void printWinner() {
+        System.out.print("최종 우승자 : ");
+    }
+
 }

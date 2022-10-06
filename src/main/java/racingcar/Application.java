@@ -15,5 +15,6 @@ public class Application {
 
         race.start();
         Screen.showRaceResult(race.getTryCount(), race.result());
+        Screen.showRaceWinner(race.result());
     }
 }
