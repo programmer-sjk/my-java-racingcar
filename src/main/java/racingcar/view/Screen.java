@@ -52,7 +52,7 @@ public class Screen {
 
     public static void showRaceWinner(CarDistance carDistance) {
         printWinner();
-        System.out.println(carDistance.winner());
+        System.out.println(String.join(", ", carDistance.winner()));
     }
 
     private static void printWinner() {
