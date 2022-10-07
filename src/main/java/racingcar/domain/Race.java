@@ -8,13 +8,16 @@ import java.util.Map;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Race {
-    private final ArrayList<Car> racingCars = new ArrayList<>();
+    private final Cars racingCars;
     private int tryCount;
 
     public Race(String carNames) {
+        List<Car> cars = new ArrayList<>();
         for (String name : carNames.split(",")) {
-            racingCars.add(new Car(name));
+            cars.add(new Car(name));
         }
+
+        racingCars = new Cars(cars);
     }
 
     public int getTryCount() {
@@ -28,7 +31,7 @@ public class Race {
     public CarDistance result() {
         Map<String, List<Boolean>> carDistance = new HashMap<>();
 
-        for (Car car : racingCars) {
+        for (Car car : racingCars.getCars()) {
             carDistance.put(car.getName(), car.getDistances());
         }
 
@@ -42,7 +45,7 @@ public class Race {
     }
 
     private void roundStart() {
-        for (Car car : racingCars) {
+        for (Car car : racingCars.getCars()) {
             car.move(pickNumberInRange(0, 9));
         }
     }

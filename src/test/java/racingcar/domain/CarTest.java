@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.constant.ERROR_MESSAGE;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -23,6 +24,28 @@ public class CarTest {
         assertThatThrownBy(() -> {
             new Car(input);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차의 이름은 5자를 초과할 수 없습니다");
+                .hasMessageContaining(ERROR_MESSAGE.TOO_LONG_NAME.toString());
+    }
+
+    @DisplayName("자동차에 4 이상의 값이 전달되면 이동한다")
+    @ParameterizedTest
+    @ValueSource(strings = {"4", "7", "9"})
+    void 자동차_이동_하는_테스트(int input) {
+        Car car = new Car("자동차이름");
+
+        car.move(input);
+
+        assertThat(car.getDistances().get(0)).isTrue();
+    }
+
+    @DisplayName("자동차에 4 미만 값이 전달되면 이동하지 않는다")
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "1", "3"})
+    void 자동차_이동_하지않는_테스트(int input) {
+        Car car = new Car("자동차이름");
+
+        car.move(input);
+
+        assertThat(car.getDistances().get(0)).isFalse();
     }
 }

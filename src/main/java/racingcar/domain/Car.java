@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.constant.ERROR_MESSAGE;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class Car {
     }
 
     public void move(int movePoint) {
-        Boolean moveResult =false;
+        Boolean moveResult = false;
         if (movePoint >= MOVE_PIVOT_POINT) {
             moveResult = true;
         }
@@ -33,7 +35,7 @@ public class Car {
 
     private void validate(String name) {
         if (name.length() > NAME_LIMIT) {
-            throw new IllegalArgumentException("자동차의 이름은 5자를 초과할 수 없습니다");
+            throw new IllegalArgumentException(ERROR_MESSAGE.TOO_LONG_NAME.toString());
         }
     }
 }

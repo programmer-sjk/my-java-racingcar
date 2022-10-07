@@ -48,11 +48,11 @@ public class CarDistanceTest {
     @DisplayName("승자는 여러명 일 수 있다")
     @Test
     void 다중_승자_테스트() {
-        Map<String, List<Boolean>> carDistance = new HashMap<>();
-        carDistance.put("승자1", Arrays.asList(true));
-        carDistance.put("승자2", Arrays.asList(true));
+        Map<String, List<Boolean>> distance = new HashMap<>();
+        distance.put("승자1", Arrays.asList(true));
+        distance.put("승자2", Arrays.asList(true));
 
-        distances = new CarDistance(carDistance);
+        CarDistance distances = new CarDistance(distance);
 
         assertThat(distances.winner()).contains("승자1", "승자2");
     }

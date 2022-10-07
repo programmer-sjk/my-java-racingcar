@@ -29,13 +29,7 @@ public class CarDistance {
 
     private static List<Map.Entry<String, Integer>> sortByDistanceDesc(Map<String, Integer> carMove) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(carMove.entrySet());
-
-        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue() - o1.getValue();
-            }
-        });
+        entryList.sort((o1, o2) -> o2.getValue() - o1.getValue());
 
         return entryList;
     }
