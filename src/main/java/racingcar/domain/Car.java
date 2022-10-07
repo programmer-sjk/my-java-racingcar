@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.constant.ERROR_MESSAGE;
+import racingcar.constant.Error;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class Car {
 
     private void validate(String name) {
         if (name.length() > NAME_LIMIT) {
-            throw new IllegalArgumentException(ERROR_MESSAGE.TOO_LONG_NAME.toString());
+            throw new IllegalArgumentException(Error.TOO_LONG_NAME.toString());
         }
     }
 }

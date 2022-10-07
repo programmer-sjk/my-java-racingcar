@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.constant.ERROR_MESSAGE;
+import racingcar.constant.Error;
 
 import java.util.HashSet;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Cars {
 
     private String uniqueName(Set<String> carName, String name) {
         if (carName.add(name) == false) {
-            throw new IllegalArgumentException(ERROR_MESSAGE.DUPLICATE_NAME.toString());
+            throw new IllegalArgumentException(Error.DUPLICATE_NAME.toString());
         }
 
         return name;

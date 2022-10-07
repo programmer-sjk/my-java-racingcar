@@ -2,10 +2,11 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.constant.ERROR_MESSAGE;
+import racingcar.constant.Error;
 
 import java.util.Arrays;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class CarsTest {
@@ -15,6 +16,6 @@ public class CarsTest {
         assertThatThrownBy(() -> {
             new Cars(Arrays.asList(new Car("차"), new Car("차")));
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR_MESSAGE.DUPLICATE_NAME.toString());
+                .hasMessageContaining(Error.DUPLICATE_NAME.toString());
     }
 }

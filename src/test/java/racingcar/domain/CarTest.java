@@ -4,7 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.constant.ERROR_MESSAGE;
+import racingcar.constant.Error;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -24,7 +24,7 @@ public class CarTest {
         assertThatThrownBy(() -> {
             new Car(input);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR_MESSAGE.TOO_LONG_NAME.toString());
+                .hasMessageContaining(Error.TOO_LONG_NAME.toString());
     }
 
     @DisplayName("자동차에 4 이상의 값이 전달되면 이동한다")
