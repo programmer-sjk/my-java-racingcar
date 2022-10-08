@@ -14,7 +14,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class RaceController {
     private static final String COMMA_DELIMITER = ",";
 
-    public void start() {
+    public void run() {
         Race race = new Race(getCars());
         int tryRound = getTryRound();
 

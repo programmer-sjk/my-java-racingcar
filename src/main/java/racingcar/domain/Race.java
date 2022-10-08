@@ -16,16 +16,6 @@ public class Race {
         racingCars = cars;
     }
 
-    public CarDistance result() {
-        Map<String, List<Boolean>> carDistance = new HashMap<>();
-
-        for (Car car : racingCars.getCars()) {
-            carDistance.put(car.getName(), car.getDistances());
-        }
-
-        return new CarDistance(carDistance);
-    }
-
     public void start(int tryRound) {
         for (int i = FIRST_ROUND_INDEX; i < tryRound; i++) {
             roundStart();
@@ -36,5 +26,15 @@ public class Race {
         for (Car car : racingCars.getCars()) {
             car.move(pickNumberInRange(MIN, MAX));
         }
+    }
+
+    public CarDistance result() {
+        Map<String, List<Boolean>> carDistance = new HashMap<>();
+
+        for (Car car : racingCars.getCars()) {
+            carDistance.put(car.getName(), car.getDistances());
+        }
+
+        return new CarDistance(carDistance);
     }
 }

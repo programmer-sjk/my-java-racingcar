@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Car {
     private static final int NAME_LENGTH_LIMIT = 5;
-    private static final int MOVE_PIVOT_POINT = 4;
+    private static final int MOVE_STANDARD_POINT = 4;
     private final String name;
     private final ArrayList<Boolean> distances = new ArrayList<>();
 
@@ -27,7 +27,7 @@ public class Car {
 
     public void move(int movePoint) {
         Boolean moveResult = CarStatus.STOP;
-        if (movePoint >= MOVE_PIVOT_POINT) {
+        if (movePoint >= MOVE_STANDARD_POINT) {
             moveResult = CarStatus.MOVE;
         }
 
@@ -35,8 +35,19 @@ public class Car {
     }
 
     private void validate(String name) {
+        validateLength(name);
+        validateEmpty(name);
+    }
+
+    private static void validateLength(String name) {
         if (name.length() > NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException(Error.TOO_LONG_NAME.toString());
+        }
+    }
+
+    private void validateEmpty(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException(Error.EMPTY_NAME.toString());
         }
     }
 }

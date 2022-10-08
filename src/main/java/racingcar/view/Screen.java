@@ -60,8 +60,7 @@ public class Screen {
     }
 
     public static void printRaceWinner(CarDistance carDistance) {
-        System.out.print(WINNER_STRING);
-        System.out.println(String.join(COMMA_JOIN_STRING, carDistance.winner()));
+        System.out.println(WINNER_STRING + String.join(COMMA_JOIN_STRING, carDistance.winner()));
     }
 
     public static void printError(String message) {
