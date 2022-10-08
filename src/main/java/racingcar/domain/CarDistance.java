@@ -4,6 +4,9 @@ import java.util.*;
 
 public class CarDistance {
     private static final String EMPTY = "";
+    private static final int HIGHEST_MOVE_INDEX = 0;
+    private static final int MOVE = 1;
+    private static final int STOP = 0;
     private Map<String, List<Boolean>> carDistance;
 
     public CarDistance(Map<String, List<Boolean>> carDistance) {
@@ -46,11 +49,11 @@ public class CarDistance {
     }
 
     private int countIfMove(Boolean isMove) {
-        return isMove ? 1 : 0;
+        return isMove ? MOVE : STOP;
     }
 
     private List<String> allWinner(List<Map.Entry<String, Integer>> entryList) {
-        int highestDistance = entryList.get(0).getValue();
+        int highestDistance = entryList.get(HIGHEST_MOVE_INDEX).getValue();
         List<String> winnerNames = new ArrayList<>();
 
         for (Map.Entry<String, Integer> list : entryList) {
@@ -63,7 +66,7 @@ public class CarDistance {
 
     private String winnerName(int highestDistance, Map.Entry<String, Integer> list) {
         if (list.getValue() != highestDistance) {
-            return "";
+            return EMPTY;
         }
 
         return list.getKey();

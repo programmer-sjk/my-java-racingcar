@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Car {
-    private static final int NAME_LIMIT = 5;
+    private static final int NAME_LENGTH_LIMIT = 5;
     private static final int MOVE_PIVOT_POINT = 4;
     private String name;
     private ArrayList<Boolean> distances = new ArrayList<>();
@@ -34,7 +34,7 @@ public class Car {
     }
 
     private void validate(String name) {
-        if (name.length() > NAME_LIMIT) {
+        if (name.length() > NAME_LENGTH_LIMIT) {
             throw new IllegalArgumentException(Error.TOO_LONG_NAME.toString());
         }
     }

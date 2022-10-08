@@ -7,6 +7,8 @@ import java.util.Map;
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Race {
+    private static final int MIN = 0;
+    private static final int MAX = 9;
     private final Cars racingCars;
     private int tryRound;
 
@@ -40,7 +42,7 @@ public class Race {
 
     private void roundStart() {
         for (Car car : racingCars.getCars()) {
-            car.move(pickNumberInRange(0, 9));
+            car.move(pickNumberInRange(MIN, MAX));
         }
     }
 }
