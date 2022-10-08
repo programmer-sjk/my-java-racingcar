@@ -10,18 +10,9 @@ public class Race {
     private static final int MIN = 0;
     private static final int MAX = 9;
     private final Cars racingCars;
-    private int tryRound;
 
     public Race(Cars cars) {
         racingCars = cars;
-    }
-
-    public int getTryRound() {
-        return this.tryRound;
-    }
-
-    public void setTryRound(String tryRound) {
-        this.tryRound = Integer.parseInt(tryRound);
     }
 
     public CarDistance result() {
@@ -34,7 +25,7 @@ public class Race {
         return new CarDistance(carDistance);
     }
 
-    public void start() {
+    public void start(int tryRound) {
         for (int i = 0; i < tryRound; i++) {
             roundStart();
         }

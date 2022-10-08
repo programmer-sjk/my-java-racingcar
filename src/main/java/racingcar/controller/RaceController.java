@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.domain.Car;
+import racingcar.domain.CarDistance;
 import racingcar.domain.Cars;
 import racingcar.domain.Race;
 import racingcar.view.Screen;
@@ -11,11 +12,13 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class RaceController {
-    public void raceStart() {
+    public void start() {
         Race race = new Race(getCars());
-        getTryRound(race);
+        int tryRound = getTryRound();
 
-        start(race);
+        start(race, tryRound);
+
+        result(tryRound, race.result());
     }
 
     private Cars getCars() {
@@ -38,19 +41,22 @@ public class RaceController {
         return new Cars(cars);
     }
 
-    private void getTryRound(Race race) {
+    private int getTryRound() {
         try {
             Screen.askTryRound();
-            race.setTryRound(readLine());
+            return Integer.parseInt(readLine());
         } catch (IllegalArgumentException e) {
             Screen.printError(e.getMessage());
-            getTryRound(race);
+            return getTryRound();
         }
     }
 
-    private void start(Race race) {
-        race.start();
-        Screen.showRaceResult(race.getTryRound(), race.result());
-        Screen.showRaceWinner(race.result());
+    private void start(Race race, int tryRound) {
+        race.start(tryRound);
+    }
+
+    private void result(int tryRound, CarDistance carDistance) {
+        Screen.showRaceResult(tryRound, carDistance);
+        Screen.showRaceWinner(carDistance);
     }
 }

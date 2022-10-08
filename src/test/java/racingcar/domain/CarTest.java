@@ -10,6 +10,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class CarTest {
+    private static final int FIRST_DISTANCE_INDEX = 0;
     @DisplayName("자동차 객체에 전달된 입력값이 이름이 된다")
     @Test
     void 자동차_이름_테스트() {
@@ -35,7 +36,7 @@ public class CarTest {
 
         car.move(input);
 
-        assertThat(car.getDistances().get(0)).isTrue();
+        assertThat(car.getDistances().get(FIRST_DISTANCE_INDEX)).isTrue();
     }
 
     @DisplayName("자동차에 4 미만 값이 전달되면 이동하지 않는다")
@@ -46,6 +47,6 @@ public class CarTest {
 
         car.move(input);
 
-        assertThat(car.getDistances().get(0)).isFalse();
+        assertThat(car.getDistances().get(FIRST_DISTANCE_INDEX)).isFalse();
     }
 }
