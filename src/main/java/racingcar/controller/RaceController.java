@@ -4,7 +4,9 @@ import racingcar.domain.Car;
 import racingcar.domain.CarDistance;
 import racingcar.domain.Cars;
 import racingcar.domain.Race;
-import racingcar.view.Screen;
+import racingcar.view.Common;
+import racingcar.view.Input;
+import racingcar.view.Output;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +27,10 @@ public class RaceController {
 
     private Cars getCars() {
         try {
-            Screen.askCarNames();
+            Input.askCarNames();
             return createCars();
         } catch (IllegalArgumentException e) {
-            Screen.printError(e.getMessage());
+            Common.printError(e.getMessage());
             return getCars();
         }
     }
@@ -45,10 +47,10 @@ public class RaceController {
 
     private int getTryRound() {
         try {
-            Screen.askTryRound();
+            Input.askTryRound();
             return Integer.parseInt(readLine());
         } catch (IllegalArgumentException e) {
-            Screen.printError(e.getMessage());
+            Common.printError(e.getMessage());
             return getTryRound();
         }
     }
@@ -58,7 +60,7 @@ public class RaceController {
     }
 
     private void result(int tryRound, CarDistance carDistance) {
-        Screen.showRaceResult(tryRound, carDistance);
-        Screen.printRaceWinner(carDistance);
+        Output.showRaceResult(tryRound, carDistance);
+        Output.printRaceWinner(carDistance);
     }
 }
