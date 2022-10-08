@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.constant.CarStatus;
 import racingcar.constant.Error;
 
 import java.util.ArrayList;
@@ -8,8 +9,8 @@ import java.util.List;
 public class Car {
     private static final int NAME_LENGTH_LIMIT = 5;
     private static final int MOVE_PIVOT_POINT = 4;
-    private String name;
-    private ArrayList<Boolean> distances = new ArrayList<>();
+    private final String name;
+    private final ArrayList<Boolean> distances = new ArrayList<>();
 
     public Car(String name) {
         validate(name);
@@ -25,9 +26,9 @@ public class Car {
     }
 
     public void move(int movePoint) {
-        Boolean moveResult = false;
+        Boolean moveResult = CarStatus.STOP;
         if (movePoint >= MOVE_PIVOT_POINT) {
-            moveResult = true;
+            moveResult = CarStatus.MOVE;
         }
 
         distances.add(moveResult);

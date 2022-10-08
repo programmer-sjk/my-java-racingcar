@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.constant.CarStatus;
 import racingcar.domain.CarDistance;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class Screen {
     }
 
     private static void printDistance(int round, List<Boolean> distances) {
-        if (distances.get(round) == true) {
+        if (distances.get(round) == CarStatus.MOVE) {
             System.out.print(GO_FORWARD_STRING);
         }
     }
@@ -58,13 +59,9 @@ public class Screen {
         System.out.println(EMPTY_STRING);
     }
 
-    public static void showRaceWinner(CarDistance carDistance) {
-        printWinner();
-        System.out.println(String.join(COMMA_JOIN_STRING, carDistance.winner()));
-    }
-
-    private static void printWinner() {
+    public static void printRaceWinner(CarDistance carDistance) {
         System.out.print(WINNER_STRING);
+        System.out.println(String.join(COMMA_JOIN_STRING, carDistance.winner()));
     }
 
     public static void printError(String message) {

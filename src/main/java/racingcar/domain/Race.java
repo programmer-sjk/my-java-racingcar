@@ -9,6 +9,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 public class Race {
     private static final int MIN = 0;
     private static final int MAX = 9;
+    private static final int FIRST_ROUND_INDEX = 0;
     private final Cars racingCars;
 
     public Race(Cars cars) {
@@ -26,7 +27,7 @@ public class Race {
     }
 
     public void start(int tryRound) {
-        for (int i = 0; i < tryRound; i++) {
+        for (int i = FIRST_ROUND_INDEX; i < tryRound; i++) {
             roundStart();
         }
     }

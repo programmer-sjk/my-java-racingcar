@@ -12,6 +12,8 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class RaceController {
+    private static final String COMMA_DELIMITER = ",";
+
     public void start() {
         Race race = new Race(getCars());
         int tryRound = getTryRound();
@@ -34,7 +36,7 @@ public class RaceController {
     private Cars createCars() {
         List<Car> cars = new ArrayList<>();
 
-        for (String name : readLine().split(",")) {
+        for (String name : readLine().split(COMMA_DELIMITER)) {
             cars.add(new Car(name));
         }
 
@@ -57,6 +59,6 @@ public class RaceController {
 
     private void result(int tryRound, CarDistance carDistance) {
         Screen.showRaceResult(tryRound, carDistance);
-        Screen.showRaceWinner(carDistance);
+        Screen.printRaceWinner(carDistance);
     }
 }

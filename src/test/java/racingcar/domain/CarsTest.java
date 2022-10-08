@@ -6,7 +6,6 @@ import racingcar.constant.Error;
 
 import java.util.Arrays;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class CarsTest {

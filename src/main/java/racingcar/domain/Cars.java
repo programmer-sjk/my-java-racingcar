@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Cars {
+    private static final Boolean ALREADY_EXIST = false;
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -27,7 +28,7 @@ public class Cars {
     }
 
     private String uniqueName(Set<String> carName, String name) {
-        if (carName.add(name) == false) {
+        if (carName.add(name) == ALREADY_EXIST) {
             throw new IllegalArgumentException(Error.DUPLICATE_NAME.toString());
         }
 
