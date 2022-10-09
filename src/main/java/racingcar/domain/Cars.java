@@ -2,9 +2,7 @@ package racingcar.domain;
 
 import racingcar.constant.Error;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
@@ -28,6 +26,10 @@ public class Cars {
         for (Car car : cars) {
             car.move(pickNumberInRange(MIN, MAX));
         }
+    }
+
+    public List<String> winner() {
+        return new CarDistance(cars).winner();
     }
 
     private void validateDuplicateName(List<Car> cars) {

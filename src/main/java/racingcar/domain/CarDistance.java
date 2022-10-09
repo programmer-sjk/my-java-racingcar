@@ -4,72 +4,74 @@ import java.util.*;
 
 public class CarDistance {
     private static final String EMPTY = "";
-    private static final int HIGHEST_MOVE_INDEX = 0;
-    private static final int MOVE = 1;
-    private static final int STOP = 0;
 
-    private Map<String, List<Boolean>> carDistance;
+    private Map<String, Integer> carToDistance;
 
-    public CarDistance(Map<String, List<Boolean>> carDistance) {
-        this.carDistance = carDistance;
+    public CarDistance(List<Car> cars) {
+        this.carToDistance = convertCarToDistance(cars);
     }
 
-    public List<String> getCarNames() {
-        return new ArrayList<>(carDistance.keySet());
+    private Map<String, Integer> convertCarToDistance(List<Car> cars) {
+        Map<String, Integer> result = new HashMap<>();
+        for (Car car : cars) {
+            result.put(car.getName(), calculateDistance(car.getDistances()));
+        }
+
+        return result;
     }
 
-    public List<Boolean> distancesByName(String name) {
-        return this.carDistance.get(name);
+    private int calculateDistance(ArrayList<Boolean> distances) {
+        int carDistance = 0;
+
+        for (Boolean distance : distances) {
+            carDistance = increaseIfMove(distance, carDistance);
+        }
+
+        return carDistance;
+    }
+
+    private int increaseIfMove(Boolean isMove, int distance) {
+        if (isMove) {
+            return distance + 1;
+        }
+
+        return distance;
     }
 
     public List<String> winner() {
-        Map<String, Integer> carMove = new HashMap<>();
-        for (String name : carDistance.keySet()) {
-            carMove.put(name, moveCountByName(name));
-        }
-
-        return allWinner(sortByDistanceDesc(carMove));
-    }
-
-    private static List<Map.Entry<String, Integer>> sortByDistanceDesc(Map<String, Integer> carMove) {
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(carMove.entrySet());
-        entryList.sort((o1, o2) -> o2.getValue() - o1.getValue());
-
-        return entryList;
-    }
-
-    private int moveCountByName(String name) {
-        int moveCount = 0;
-        List<Boolean> carDistance = this.carDistance.get(name);
-
-        for (Boolean distance : carDistance) {
-            moveCount += countIfMove(distance);
-        }
-
-        return moveCount;
-    }
-
-    private int countIfMove(Boolean isMove) {
-        return isMove ? MOVE : STOP;
-    }
-
-    private List<String> allWinner(List<Map.Entry<String, Integer>> entryList) {
-        int highestDistance = entryList.get(HIGHEST_MOVE_INDEX).getValue();
         List<String> winnerNames = new ArrayList<>();
+        int highestDistance = getHighestDistance();
 
-        for (Map.Entry<String, Integer> list : entryList) {
-            winnerNames.add(winnerName(highestDistance, list));
+        for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
+            winnerNames.add(findMultiWinner(entry, highestDistance));
         }
 
         winnerNames.removeIf(String::isEmpty);
         return winnerNames;
     }
 
-    private String winnerName(int highestDistance, Map.Entry<String, Integer> list) {
-        if (list.getValue() != highestDistance) {
+    private int getHighestDistance() {
+        int highestDistance = -1;
+        for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
+            highestDistance = returnHighestDistance(entry.getValue(), highestDistance);
+        }
+
+        return highestDistance;
+    }
+
+    private int returnHighestDistance(int carMoveDistance, int highestDistance) {
+        if (carMoveDistance > highestDistance) {
+            return carMoveDistance;
+        }
+
+        return highestDistance;
+    }
+
+    private String findMultiWinner(Map.Entry<String, Integer> entry, int highestDistance) {
+        if (entry.getValue() != highestDistance) {
             return EMPTY;
         }
 
-        return list.getKey();
+        return entry.getKey();
     }
 }

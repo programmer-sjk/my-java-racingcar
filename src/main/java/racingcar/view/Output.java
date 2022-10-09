@@ -1,7 +1,8 @@
 package racingcar.view;
 
 import racingcar.constant.CarStatus;
-import racingcar.domain.CarDistance;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
 
 import java.util.List;
 
@@ -11,19 +12,19 @@ public class Output {
     private static final String GO_FORWARD_STRING = "-";
     private static final String COMMA_JOIN_STRING = ", ";
 
-    public static void showRaceResult(int tryRound, CarDistance carDistance) {
+    public static void showRaceResult(int tryRound, Cars cars) {
         System.out.println(RACE_RESULT_STRING);
 
         for (int i = 0; i < tryRound; i++) {
-            showRaceRoundResult(i, carDistance);
+            showRaceRoundResult(i, cars);
             Common.printEmptyLine();
         }
     }
 
-    private static void showRaceRoundResult(int currentCount, CarDistance carDistance) {
-        for (String carName : carDistance.getCarNames()) {
-            printCarName(carName);
-            printDistances(currentCount, carDistance.distancesByName(carName));
+    private static void showRaceRoundResult(int currentRound, Cars cars) {
+        for (Car car : cars.getCars()) {
+            printCarName(car.getName());
+            printDistances(currentRound, car.getDistances());
             Common.printEmptyLine();
         }
     }
@@ -44,7 +45,7 @@ public class Output {
         }
     }
 
-    public static void printRaceWinner(CarDistance carDistance) {
-        System.out.println(WINNER_STRING + String.join(COMMA_JOIN_STRING, carDistance.winner()));
+    public static void printRaceWinner(List<String> winners) {
+        System.out.println(WINNER_STRING + String.join(COMMA_JOIN_STRING, winners));
     }
 }

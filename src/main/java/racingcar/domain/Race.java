@@ -15,6 +15,10 @@ public class Race {
         racingCars = cars;
     }
 
+    public Cars getRacingCars() {
+        return racingCars;
+    }
+
     public void start(int tryRound) {
         validate(tryRound);
 
@@ -33,13 +37,7 @@ public class Race {
         racingCars.move();
     }
 
-    public CarDistance result() {
-        Map<String, List<Boolean>> carDistance = new HashMap<>();
-
-        for (Car car : racingCars.getCars()) {
-            carDistance.put(car.getName(), car.getDistances());
-        }
-
-        return new CarDistance(carDistance);
+    public List<String> winner() {
+        return racingCars.winner();
     }
 }
