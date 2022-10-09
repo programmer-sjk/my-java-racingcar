@@ -1,15 +1,13 @@
 package racingcar.domain;
 
+import racingcar.constant.Error;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
 public class Race {
-    private static final int MIN = 0;
-    private static final int MAX = 9;
-    private static final int FIRST_ROUND_INDEX = 0;
+    private static final int FIRST_ROUND = 1;
     private final Cars racingCars;
 
     public Race(Cars cars) {
@@ -17,15 +15,21 @@ public class Race {
     }
 
     public void start(int tryRound) {
-        for (int i = FIRST_ROUND_INDEX; i < tryRound; i++) {
+        validate(tryRound);
+
+        for (int i = FIRST_ROUND; i <= tryRound; i++) {
             roundStart();
         }
     }
 
-    private void roundStart() {
-        for (Car car : racingCars.getCars()) {
-            car.move(pickNumberInRange(MIN, MAX));
+    private void validate(int tryRound) {
+        if (tryRound < FIRST_ROUND) {
+            throw new IllegalArgumentException(Error.SHOULD_OVER_MINIMUM_ROUND.toString());
         }
+    }
+
+    private void roundStart() {
+        racingCars.move();
     }
 
     public CarDistance result() {

@@ -6,7 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class Cars {
+    private static final int MIN = 0;
+    private static final int MAX = 9;
     private static final Boolean ALREADY_EXIST = false;
     private final List<Car> cars;
 
@@ -19,16 +23,22 @@ public class Cars {
         return cars;
     }
 
-    private void validateDuplicateName(List<Car> cars) {
-        Set<String> carName = new HashSet<>();
-
+    public void move() {
         for (Car car : cars) {
-            carName.add(uniqueName(carName, car.getName()));
+            car.move(pickNumberInRange(MIN, MAX));
         }
     }
 
-    private String uniqueName(Set<String> carName, String name) {
-        if (carName.add(name) == ALREADY_EXIST) {
+    private void validateDuplicateName(List<Car> cars) {
+        Set<String> carUniqueName = new HashSet<>();
+
+        for (Car car : cars) {
+            carUniqueName.add(uniqueName(carUniqueName, car.getName()));
+        }
+    }
+
+    private String uniqueName(Set<String> carUniqueName, String name) {
+        if (carUniqueName.add(name) == ALREADY_EXIST) {
             throw new IllegalArgumentException(Error.DUPLICATE_NAME.toString());
         }
 
