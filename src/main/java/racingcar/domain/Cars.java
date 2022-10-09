@@ -12,6 +12,7 @@ public class Cars {
     private static final int MIN = 0;
     private static final int MAX = 9;
     private static final Boolean ALREADY_EXIST = false;
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {

@@ -7,6 +7,7 @@ public class CarDistance {
     private static final int HIGHEST_MOVE_INDEX = 0;
     private static final int MOVE = 1;
     private static final int STOP = 0;
+
     private Map<String, List<Boolean>> carDistance;
 
     public CarDistance(Map<String, List<Boolean>> carDistance) {

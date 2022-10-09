@@ -1,28 +1,26 @@
 package racingcar.domain;
 
 import racingcar.constant.CarStatus;
-import racingcar.constant.Error;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Car {
-    private static final int NAME_LENGTH_LIMIT = 5;
     private static final int MOVE_STANDARD_POINT = 4;
-    private final String name;
-    private final ArrayList<Boolean> distances = new ArrayList<>();
+
+    private final CarName name;
+    private final Distance distance;
 
     public Car(String name) {
-        validate(name);
-        this.name = name;
+        this.name = new CarName(name);
+        this.distance = new Distance();
     }
 
     public String getName() {
-        return this.name;
+        return this.name.getName();
     }
 
-    public List<Boolean> getDistances() {
-        return this.distances;
+    public ArrayList<Boolean> getDistances() {
+        return this.distance.getDistances();
     }
 
     public void move(int movePoint) {
@@ -31,23 +29,6 @@ public class Car {
             moveResult = CarStatus.MOVE;
         }
 
-        distances.add(moveResult);
-    }
-
-    private void validate(String name) {
-        validateLength(name);
-        validateEmpty(name);
-    }
-
-    private static void validateLength(String name) {
-        if (name.length() > NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException(Error.TOO_LONG_NAME.toString());
-        }
-    }
-
-    private void validateEmpty(String name) {
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException(Error.EMPTY_NAME.toString());
-        }
+        distance.setDistance(moveResult);
     }
 }

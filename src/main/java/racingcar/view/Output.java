@@ -5,8 +5,6 @@ import racingcar.domain.CarDistance;
 
 import java.util.List;
 
-import static racingcar.view.Common.printEmptyLine;
-
 public class Output {
     private static final String RACE_RESULT_STRING = "실행결과";
     private static final String WINNER_STRING = "최종 우승자 : ";
@@ -18,7 +16,7 @@ public class Output {
 
         for (int i = 0; i < tryRound; i++) {
             showRaceRoundResult(i, carDistance);
-            printEmptyLine();
+            Common.printEmptyLine();
         }
     }
 
@@ -26,7 +24,7 @@ public class Output {
         for (String carName : carDistance.getCarNames()) {
             printCarName(carName);
             printDistances(currentCount, carDistance.distancesByName(carName));
-            printEmptyLine();
+            Common.printEmptyLine();
         }
     }
 

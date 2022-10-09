@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Race {
     private static final int FIRST_ROUND = 1;
+
     private final Cars racingCars;
 
     public Race(Cars cars) {

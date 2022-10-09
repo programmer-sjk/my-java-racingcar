@@ -8,6 +8,7 @@ public enum Error {
     SHOULD_OVER_MINIMUM_ROUND("시도 횟수는 0보다 커야한다.");
 
     private static final String PREFIX = "[ERROR] ";
+
     private final String description;
 
     Error(String description) {
