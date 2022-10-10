@@ -2,9 +2,7 @@ package racingcar.domain;
 
 import racingcar.constant.Error;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Race {
     private static final int FIRST_ROUND = 1;

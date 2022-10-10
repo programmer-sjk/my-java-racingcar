@@ -13,7 +13,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class RaceController {
-    private static final String COMMA_DELIMITER = ",";
+    private static final String NAME_DELIMITER = ",";
 
     public void run() {
         Race race = new Race(getCars());
@@ -38,7 +38,7 @@ public class RaceController {
     private Cars createCars() {
         List<Car> cars = new ArrayList<>();
 
-        for (String name : readLine().split(COMMA_DELIMITER)) {
+        for (String name : readLine().split(NAME_DELIMITER)) {
             cars.add(new Car(name));
         }
 

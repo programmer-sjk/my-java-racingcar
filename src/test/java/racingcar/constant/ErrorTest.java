@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 public class ErrorTest {
     @DisplayName("모든 에러 메시지는 [ERROR] 메시지를 포함한다")
     @Test

@@ -1,17 +1,11 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.constant.CarStatus;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 
 public class CarDistanceTest {
     public static final int MOVE = 9;
