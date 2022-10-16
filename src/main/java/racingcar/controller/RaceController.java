@@ -10,8 +10,6 @@ import racingcar.view.Output;
 import java.util.ArrayList;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
 public class RaceController {
     private static final String NAME_DELIMITER = ",";
 
@@ -38,7 +36,7 @@ public class RaceController {
     private Cars createCars() {
         List<Car> cars = new ArrayList<>();
 
-        for (String name : readLine().split(NAME_DELIMITER)) {
+        for (String name : Input.read().split(NAME_DELIMITER)) {
             cars.add(new Car(name));
         }
 
@@ -48,7 +46,7 @@ public class RaceController {
     private int getTryRound() {
         try {
             Output.askTryRound();
-            return Integer.parseInt(readLine());
+            return Integer.parseInt(Input.read());
         } catch (IllegalArgumentException e) {
             Common.printError(e.getMessage());
             return getTryRound();
