@@ -27,7 +27,7 @@ public class RaceController {
 
     private Cars getCars() {
         try {
-            Input.askCarNames();
+            Output.askCarNames();
             return createCars();
         } catch (IllegalArgumentException e) {
             Common.printError(e.getMessage());
@@ -47,7 +47,7 @@ public class RaceController {
 
     private int getTryRound() {
         try {
-            Input.askTryRound();
+            Output.askTryRound();
             return Integer.parseInt(readLine());
         } catch (IllegalArgumentException e) {
             Common.printError(e.getMessage());
