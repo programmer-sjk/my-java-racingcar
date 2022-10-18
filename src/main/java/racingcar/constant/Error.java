@@ -7,7 +7,7 @@ public enum Error {
     INVALID_INTEGER("시도 횟수는 숫자여야 한다."),
     SHOULD_OVER_MINIMUM_ROUND("시도 횟수는 0보다 커야한다.");
 
-    private static final String PREFIX = "[ERROR] ";
+    private static final String PREFIX = "[ERROR]";
 
     private final String description;
 
@@ -17,6 +17,6 @@ public enum Error {
 
     @Override
     public String toString() {
-        return Error.PREFIX + description;
+        return String.format("%s %s", Error.PREFIX, description);
     }
 }
