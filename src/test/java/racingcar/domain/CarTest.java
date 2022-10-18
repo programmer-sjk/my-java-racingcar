@@ -8,8 +8,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
-    private static final int FIRST_DISTANCE_INDEX = 0;
-
     @DisplayName("자동차 객체에 전달된 입력값이 이름이 된다")
     @Test
     void 자동차_이름_테스트() {
@@ -25,7 +23,7 @@ public class CarTest {
 
         car.move(input);
 
-        assertThat(car.getDistances().get(FIRST_DISTANCE_INDEX)).isTrue();
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 
     @DisplayName("자동차에 4 미만 값이 전달되면 이동하지 않는다")
@@ -36,6 +34,6 @@ public class CarTest {
 
         car.move(input);
 
-        assertThat(car.getDistances().get(FIRST_DISTANCE_INDEX)).isFalse();
+        assertThat(car.getDistance()).isEqualTo(0);
     }
 }

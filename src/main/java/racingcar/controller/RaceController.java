@@ -18,10 +18,18 @@ public class RaceController {
         Race race = new Race(getCars());
         TryRound tryRound = new TryRound(getTryRound());
 
-        race.start(tryRound);
+        raceStart(race, tryRound);
 
-        Output.showRaceResult(tryRound, race.getRacingCars());
         Output.printRaceWinner(race.winner());
+    }
+
+    private void raceStart(Race race, TryRound tryRound) {
+        Output.printResultComment();
+
+        for (int i = tryRound.getStartRound(); i <= tryRound.get(); i++) {
+            race.start();
+            Output.showRaceRoundResult(race.getRacingCars());
+        }
     }
 
     private Cars getCars() {

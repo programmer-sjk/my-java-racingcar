@@ -14,28 +14,10 @@ public class CarDistance {
     private Map<String, Integer> convertCarToDistance(List<Car> cars) {
         Map<String, Integer> result = new HashMap<>();
         for (Car car : cars) {
-            result.put(car.getName(), calculateDistance(car.getDistances()));
+            result.put(car.getName(), car.getDistance());
         }
 
         return result;
-    }
-
-    private int calculateDistance(ArrayList<Boolean> distances) {
-        int carDistance = 0;
-
-        for (Boolean distance : distances) {
-            carDistance = increaseIfMove(distance, carDistance);
-        }
-
-        return carDistance;
-    }
-
-    private int increaseIfMove(Boolean isMove, int distance) {
-        if (isMove) {
-            return distance + 1;
-        }
-
-        return distance;
     }
 
     public List<String> winner() {

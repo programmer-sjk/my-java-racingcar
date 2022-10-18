@@ -1,9 +1,7 @@
 package racingcar.view;
 
-import racingcar.constant.CarStatus;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.TryRound;
 
 import java.util.List;
 
@@ -23,35 +21,25 @@ public class Output {
         System.out.println(ASK_TRY_ROUND_STRING);
     }
 
-    public static void showRaceResult(TryRound tryRound, Cars cars) {
+    public static void printResultComment() {
         System.out.println(RACE_RESULT_STRING);
-
-        for (int i = 0; i < tryRound.get(); i++) {
-            showRaceRoundResult(i, cars);
-            Common.printEmptyLine();
-        }
     }
 
-    private static void showRaceRoundResult(int currentRound, Cars cars) {
+    public static void showRaceRoundResult(Cars cars) {
         for (Car car : cars.getCars()) {
             printCarName(car.getName());
-            printDistances(currentRound, car.getDistances());
+            printDistance(car.getDistance());
             Common.printEmptyLine();
         }
+        Common.printEmptyLine();
     }
 
     private static void printCarName(String carName) {
         System.out.print(carName + " : ");
     }
 
-    private static void printDistances(int currentCount, List<Boolean> distances) {
-        for (int i = 0; i <= currentCount; i++) {
-            printDistance(i, distances);
-        }
-    }
-
-    private static void printDistance(int round, List<Boolean> distances) {
-        if (distances.get(round) == CarStatus.MOVE) {
+    private static void printDistance(int distance) {
+        for (int i = 0; i <= distance; i++) {
             System.out.print(GO_FORWARD_STRING);
         }
     }

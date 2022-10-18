@@ -1,9 +1,5 @@
 package racingcar.domain;
 
-import racingcar.constant.CarStatus;
-
-import java.util.ArrayList;
-
 public class Car {
     private static final int MOVE_STANDARD_POINT = 4;
 
@@ -19,16 +15,13 @@ public class Car {
         return this.name.getName();
     }
 
-    public ArrayList<Boolean> getDistances() {
-        return this.distance.getDistances();
+    public int getDistance() {
+        return this.distance.getDistance();
     }
 
     public void move(int movePoint) {
-        Boolean moveResult = CarStatus.STOP;
         if (movePoint >= MOVE_STANDARD_POINT) {
-            moveResult = CarStatus.MOVE;
+            distance.increaseDistance();
         }
-
-        distance.setDistance(moveResult);
     }
 }

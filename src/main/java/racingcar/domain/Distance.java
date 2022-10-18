@@ -1,17 +1,17 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-
 public class Distance {
-    private final ArrayList<Boolean> distances = new ArrayList<>();
+    private int moveDistance;
 
-    public Distance() {}
-
-    public ArrayList<Boolean> getDistances() {
-        return this.distances;
+    public Distance() {
+        this.moveDistance = 0;
     }
 
-    public void setDistance(Boolean move) {
-        distances.add(move);
+    public int getDistance() {
+        return this.moveDistance;
+    }
+
+    public void increaseDistance() {
+        this.moveDistance += 1;
     }
 }

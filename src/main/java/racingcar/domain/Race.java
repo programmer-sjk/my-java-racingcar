@@ -13,13 +13,7 @@ public class Race {
         return racingCars;
     }
 
-    public void start(TryRound tryRound) {
-        for (int i = tryRound.getStartRound(); i <= tryRound.get(); i++) {
-            roundStart();
-        }
-    }
-
-    private void roundStart() {
+    public void start() {
         racingCars.move();
     }
 
