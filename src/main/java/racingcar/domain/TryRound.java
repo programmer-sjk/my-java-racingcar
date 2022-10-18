@@ -3,7 +3,7 @@ package racingcar.domain;
 import racingcar.constant.Error;
 
 public class TryRound {
-    private static final int MINIMUM_ROUND = 1;
+    private static final int START_ROUND = 1;
 
     private final int tryRound;
 
@@ -13,7 +13,7 @@ public class TryRound {
     }
 
     private void validate(int tryRound) {
-        if (tryRound < MINIMUM_ROUND) {
+        if (tryRound < START_ROUND) {
             throw new IllegalArgumentException(Error.SHOULD_OVER_MINIMUM_ROUND.toString());
         }
     }
@@ -23,6 +23,6 @@ public class TryRound {
     }
 
     public int getStartRound() {
-        return TryRound.MINIMUM_ROUND;
+        return TryRound.START_ROUND;
     }
 }
