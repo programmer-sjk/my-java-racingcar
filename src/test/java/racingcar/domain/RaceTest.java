@@ -6,16 +6,15 @@ import racingcar.constant.Error;
 
 import java.util.Arrays;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class RaceTest {
-    @DisplayName("레이스의 시도 횟수는 0보다 커야 한다")
+    @DisplayName("레이스에 참여한 자동차를 구할 수 있다")
     @Test
-    void 시도횟수_예외_테스트() {
-        assertThatThrownBy(() -> {
-            Cars cars = new Cars(Arrays.asList(new Car("차")));
-            new Race(cars).start(new TryRound(0));
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Error.SHOULD_OVER_MINIMUM_ROUND.toString());
+    void 레이스_참여한_자동차_테스트() {
+        Cars cars = new Cars(Arrays.asList(new Car("차1"), new Car("차2")));
+        Race race = new Race(cars);
+        assertThat(race.getRacingCars().equals(cars)).isTrue();
     }
 }
