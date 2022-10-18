@@ -3,6 +3,7 @@ package racingcar.view;
 import racingcar.constant.CarStatus;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.TryRound;
 
 import java.util.List;
 
@@ -22,10 +23,10 @@ public class Output {
         System.out.println(ASK_TRY_ROUND_STRING);
     }
 
-    public static void showRaceResult(int tryRound, Cars cars) {
+    public static void showRaceResult(TryRound tryRound, Cars cars) {
         System.out.println(RACE_RESULT_STRING);
 
-        for (int i = 0; i < tryRound; i++) {
+        for (int i = 0; i < tryRound.get(); i++) {
             showRaceRoundResult(i, cars);
             Common.printEmptyLine();
         }

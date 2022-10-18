@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Race;
+import racingcar.domain.TryRound;
 import racingcar.view.Common;
 import racingcar.view.Input;
 import racingcar.view.Output;
@@ -15,7 +16,7 @@ public class RaceController {
 
     public void run() {
         Race race = new Race(getCars());
-        int tryRound = getTryRound();
+        TryRound tryRound = new TryRound(getTryRound());
 
         race.start(tryRound);
 

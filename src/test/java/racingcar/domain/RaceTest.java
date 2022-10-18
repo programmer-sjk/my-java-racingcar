@@ -14,7 +14,7 @@ public class RaceTest {
     void 시도횟수_예외_테스트() {
         assertThatThrownBy(() -> {
             Cars cars = new Cars(Arrays.asList(new Car("차")));
-            new Race(cars).start(0);
+            new Race(cars).start(new TryRound(0));
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Error.SHOULD_OVER_MINIMUM_ROUND.toString());
     }
