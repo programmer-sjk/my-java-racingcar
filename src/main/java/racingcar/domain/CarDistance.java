@@ -4,11 +4,13 @@ import java.util.*;
 
 public class CarDistance {
     private static final String EMPTY = "";
+    private final int maxDistance;
 
     private Map<String, Integer> carToDistance;
 
     public CarDistance(Cars cars) {
         this.carToDistance = convertCarToDistance(cars);
+        this.maxDistance = getMaxDistance();
     }
 
     private Map<String, Integer> convertCarToDistance(Cars cars) {
@@ -22,13 +24,11 @@ public class CarDistance {
 
     public List<String> winner() {
         List<String> winnerNames = new ArrayList<>();
-        int maxDistance = getMaxDistance(); // Todo max로 이름 변경
 
         for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
-            winnerNames.add(findMultiWinner(entry, maxDistance));
+            addWinner(winnerNames, entry);
         }
 
-        winnerNames.removeIf(String::isEmpty); // Todo remove를 안 쓰는 방향으로 수정가능한지 체크
         return winnerNames;
     }
 
@@ -49,11 +49,9 @@ public class CarDistance {
         return maxDistance;
     }
 
-    private String findMultiWinner(Map.Entry<String, Integer> entry, int highestDistance) {
-        if (entry.getValue() != highestDistance) {
-            return EMPTY;
+    private void addWinner(List<String> winnerNames, Map.Entry<String, Integer> entry) {
+        if (entry.getValue() == this.maxDistance) {
+            winnerNames.add(entry.getKey());
         }
-
-        return entry.getKey();
     }
 }
