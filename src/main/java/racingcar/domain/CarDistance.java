@@ -22,31 +22,31 @@ public class CarDistance {
 
     public List<String> winner() {
         List<String> winnerNames = new ArrayList<>();
-        int highestDistance = getHighestDistance(); // Todo max로 이름 변경
+        int maxDistance = getMaxDistance(); // Todo max로 이름 변경
 
         for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
-            winnerNames.add(findMultiWinner(entry, highestDistance));
+            winnerNames.add(findMultiWinner(entry, maxDistance));
         }
 
         winnerNames.removeIf(String::isEmpty); // Todo remove를 안 쓰는 방향으로 수정가능한지 체크
         return winnerNames;
     }
 
-    private int getHighestDistance() {
-        int highestDistance = -1;
+    private int getMaxDistance() {
+        int maxDistance = -1;
         for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
-            highestDistance = returnHighestDistance(entry.getValue(), highestDistance);
+            maxDistance = getMaxDistance(entry.getValue(), maxDistance);
         }
 
-        return highestDistance;
+        return maxDistance;
     }
 
-    private int returnHighestDistance(int carMoveDistance, int highestDistance) {
-        if (carMoveDistance > highestDistance) {
+    private int getMaxDistance(int carMoveDistance, int maxDistance) {
+        if (carMoveDistance > maxDistance) {
             return carMoveDistance;
         }
 
-        return highestDistance;
+        return maxDistance;
     }
 
     private String findMultiWinner(Map.Entry<String, Integer> entry, int highestDistance) {
