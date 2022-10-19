@@ -23,15 +23,6 @@ public class RaceController {
         Output.printRaceWinner(race.winner());
     }
 
-    private void raceStart(Race race, TryRound tryRound) {
-        Output.printResultComment();
-
-        for (int i = tryRound.getStartRound(); i <= tryRound.get(); i++) {
-            race.start();
-            Output.showRaceRoundResult(race.getRacingCars());
-        }
-    }
-
     private Cars getCars() {
         try {
             Output.askCarNames();
@@ -59,6 +50,15 @@ public class RaceController {
         } catch (IllegalArgumentException e) {
             Common.printError(e.getMessage());
             return getTryRound();
+        }
+    }
+
+    private void raceStart(Race race, TryRound tryRound) {
+        Output.printResultComment();
+
+        for (int i = tryRound.getStartRound(); i <= tryRound.get(); i++) {
+            race.start();
+            Output.showRaceRoundResult(race.getRacingCars());
         }
     }
 }
