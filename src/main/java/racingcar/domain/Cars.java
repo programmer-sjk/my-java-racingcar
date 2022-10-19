@@ -28,10 +28,6 @@ public class Cars {
         }
     }
 
-    public List<String> winner() {
-        return new CarDistance(cars).winner();
-    }
-
     private void validateDuplicateName(List<Car> cars) {
         Set<String> carUniqueName = new HashSet<>();
 

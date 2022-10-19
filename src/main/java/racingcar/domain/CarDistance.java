@@ -7,13 +7,13 @@ public class CarDistance {
 
     private Map<String, Integer> carToDistance;
 
-    public CarDistance(List<Car> cars) {
+    public CarDistance(Cars cars) {
         this.carToDistance = convertCarToDistance(cars);
     }
 
-    private Map<String, Integer> convertCarToDistance(List<Car> cars) {
+    private Map<String, Integer> convertCarToDistance(Cars cars) {
         Map<String, Integer> result = new HashMap<>();
-        for (Car car : cars) {
+        for (Car car : cars.getCars()) {
             result.put(car.getName(), car.getDistance());
         }
 
@@ -22,13 +22,13 @@ public class CarDistance {
 
     public List<String> winner() {
         List<String> winnerNames = new ArrayList<>();
-        int highestDistance = getHighestDistance();
+        int highestDistance = getHighestDistance(); // Todo max로 이름 변경
 
         for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
             winnerNames.add(findMultiWinner(entry, highestDistance));
         }
 
-        winnerNames.removeIf(String::isEmpty);
+        winnerNames.removeIf(String::isEmpty); // Todo remove를 안 쓰는 방향으로 수정가능한지 체크
         return winnerNames;
     }
 

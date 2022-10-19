@@ -39,7 +39,7 @@ public class Output {
     }
 
     private static void printDistance(int distance) {
-        for (int i = 0; i <= distance; i++) {
+        for (int i = 0; i < distance; i++) {
             System.out.print(GO_FORWARD_STRING);
         }
     }

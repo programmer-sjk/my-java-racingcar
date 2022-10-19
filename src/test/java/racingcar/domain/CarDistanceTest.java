@@ -21,7 +21,9 @@ public class CarDistanceTest {
         Car loser = new Car("패자");
         loser.move(STOP);
 
-        assertThat(new CarDistance(Arrays.asList(winner, loser)).winner()).contains("승자");
+        Cars cars = new Cars(Arrays.asList(winner, loser));
+
+        assertThat(new CarDistance(cars).winner()).contains("승자");
     }
 
     @DisplayName("승자는 여러명 일 수 있다")
@@ -33,7 +35,9 @@ public class CarDistanceTest {
         Car loser = new Car("승자2");
         loser.move(MOVE);
 
-        assertThat(new CarDistance(Arrays.asList(winner, loser)).winner()).contains("승자1", "승자2");
+        Cars cars = new Cars(Arrays.asList(winner, loser));
+
+        assertThat(new CarDistance(cars).winner()).contains("승자1", "승자2");
 
     }
 }

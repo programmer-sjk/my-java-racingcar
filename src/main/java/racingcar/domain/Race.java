@@ -18,6 +18,6 @@ public class Race {
     }
 
     public List<String> winner() {
-        return racingCars.winner();
+        return new CarDistance(racingCars).winner();
     }
 }
