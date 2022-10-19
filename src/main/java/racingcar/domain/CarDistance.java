@@ -3,7 +3,6 @@ package racingcar.domain;
 import java.util.*;
 
 public class CarDistance {
-    private static final String EMPTY = "";
     private final int maxDistance;
 
     private Map<String, Integer> carToDistance;
@@ -35,13 +34,13 @@ public class CarDistance {
     private int getMaxDistance() {
         int maxDistance = -1;
         for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
-            maxDistance = getMaxDistance(entry.getValue(), maxDistance);
+            maxDistance = returnMaxDistance(entry.getValue(), maxDistance);
         }
 
         return maxDistance;
     }
 
-    private int getMaxDistance(int carMoveDistance, int maxDistance) {
+    private int returnMaxDistance(int carMoveDistance, int maxDistance) {
         if (carMoveDistance > maxDistance) {
             return carMoveDistance;
         }
