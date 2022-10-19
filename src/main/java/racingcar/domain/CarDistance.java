@@ -21,16 +21,6 @@ public class CarDistance {
         return result;
     }
 
-    public List<String> winner() {
-        List<String> winnerNames = new ArrayList<>();
-
-        for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
-            addWinner(winnerNames, entry);
-        }
-
-        return winnerNames;
-    }
-
     private int getMaxDistance() {
         int maxDistance = -1;
         for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
@@ -46,6 +36,16 @@ public class CarDistance {
         }
 
         return maxDistance;
+    }
+
+    public List<String> winner() {
+        List<String> winnerNames = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : carToDistance.entrySet()) {
+            addWinner(winnerNames, entry);
+        }
+
+        return winnerNames;
     }
 
     private void addWinner(List<String> winnerNames, Map.Entry<String, Integer> entry) {
